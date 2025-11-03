@@ -8,19 +8,13 @@ int main() {
 
     printf("Enter a number: ");
     scanf("%d", &n);
-
     printf("\nTime Complexity: O(1)\n");
-
-    start = clock();  // Start timer
-
-    // Executes only once
+    start = clock();  
     int square = n * n;
-
-    end = clock();  // End timer
-
+    end = clock();  
     time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
     printf("Square of %d = %d\n", n, square);
     printf("Execution Time = %f seconds\n", time_taken);
-
     return 0;
 }
+
