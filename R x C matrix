@@ -5,7 +5,7 @@ int main() {
     printf("Enter rows and columns: ");
     scanf("%d %d", &R, &C);
 
-    int matrix = (int)malloc(R * C * sizeof(int));
+    int matrix = (int*)malloc(R * C * sizeof(int));
     if (matrix == NULL) {
         printf("Memory allocation failed!\n");
         return 1;
