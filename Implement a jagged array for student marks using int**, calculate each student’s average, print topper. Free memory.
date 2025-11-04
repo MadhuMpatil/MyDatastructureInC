@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int n; // number of students
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+    int **marks = (int**)malloc(n * sizeof(int*));
+    if (marks == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+    int *subjects = (int*)malloc(n * sizeof(int)); // store number of subjects per student
+    if (subjects == NULL) {
+        printf("Memory allocation failed!\n");
+        free(marks);
+        return 1;
+    }
+    double *avg = (double*)malloc(n * sizeof(double)); // store averages
+    if (avg == NULL) {
+        printf("Memory allocation failed!\n");
+        free(marks);
+        free(subjects);
+        return 1;
+    }
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter number of subjects for student %d: ", i + 1);
+        scanf("%d", &subjects[i]);
+        marks[i] = (int*)malloc(subjects[i] * sizeof(int));
+        if (marks[i] == NULL) {
+            printf("Memory allocation failed!\n");
+            for (int j = 0; j < i; j++) free(marks[j]);
+            free(marks);
+            free(subjects);
+            free(avg);
+            return 1;
+        }
+        printf("Enter %d marks for student %d: ", subjects[i], i + 1);
+        int sum = 0;
+        for (int j = 0; j < subjects[i]; j++) {
+            scanf("%d", &marks[i][j]);
+            sum += marks[i][j];
+        }
+        avg[i] = (double)sum / subjects[i];
+    }
+    int topper = 0;
+    for (int i = 1; i < n; i++) {
+        if (avg[i] > avg[topper])
+            topper = i;
+    }
+    printf("\nStudent Averages:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Student %d Average: %.2f\n", i + 1, avg[i]);
+    }
+    printf("\nTopper: Student %d with Average = %.2f\n", topper + 1, avg[topper]);
+    for (int i = 0; i < n; i++) {
+        free(marks[i]);
+    }
+    free(marks);
+    free(subjects);
+    free(avg);
+    return 0;
+}
