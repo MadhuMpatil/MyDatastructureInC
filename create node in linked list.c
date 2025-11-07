@@ -1,3 +1,5 @@
+LINKED LIST OPERATIONS
+1.create node in linked list
 #include<stdio.h>
 #include<stdlib.h>
 struct Node{
