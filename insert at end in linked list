@@ -1,4 +1,4 @@
-3.Insert at beginning
+3.Insert at end
 #include <stdio.h>
 #include <stdlib.h>
 struct Node {
