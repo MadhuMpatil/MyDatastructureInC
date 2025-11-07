@@ -1,3 +1,4 @@
+5.delete at beginning
 #include <stdio.h>
 #include <stdlib.h>
 // Define structure for Node
